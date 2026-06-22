@@ -52,6 +52,83 @@
         <div>> COMPILANDO QUIZ-EVALUATOR.COB... <span class="ok">OK</span></div>
         <div>> MODO: SORTEIO ALEATÓRIO DE 10/50... <span class="ok">ATIVO</span></div>
 
+
+        <!-- PAINEL INFORMATIVO COBOL -->
+<div class="info-cobol-panel">
+  <div class="info-panel-header">
+    <span>O QUE É COBOL?</span>
+    <span>GNU COBOL 3.1</span>
+  </div>
+
+  <div class="info-panel-body">
+    <div class="info-grid-4">
+
+      <div class="info-card">
+        <div class="info-card-label">CRIADO EM</div>
+        <div class="info-card-value">
+          <span class="hl">1959</span> — Grace Hopper e o Departamento de Defesa dos EUA
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-label">ONDE É USADO HOJE</div>
+        <div class="info-card-value">
+          Bancos, governo e seguradoras.
+          <span class="hl">&gt;95%</span> das transações em caixas eletrônicos passam por COBOL
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-label">CARACTERÍSTICA CENTRAL</div>
+        <div class="info-card-value">
+          Sintaxe em <span class="hl">inglês natural</span>, pensada para ser legível até por não-programadores
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-label">ESTRUTURA DO PROGRAMA</div>
+        <div class="info-card-value">
+          <span class="hl">IDENTIFICATION · ENVIRONMENT · DATA · PROCEDURE</span> — 4 divisões fixas
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-separator"></div>
+
+    <div class="info-section-title">COMO O COBOL JULGA SUAS RESPOSTAS</div>
+
+    <div class="cobol-code-block">
+      <span class="ln">001</span><span class="kw">IDENTIFICATION DIVISION.</span><br>
+      <span class="ln">002</span><span class="kw">PROGRAM-ID.</span> <span class="st">QUIZ-EVALUATOR</span>.<br>
+      <span class="ln">003</span><span class="kw">PROCEDURE DIVISION.</span><br>
+      <span class="ln">004</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">EVALUATE</span> RESPOSTA-USUARIO<br>
+      <span class="ln">005</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">WHEN</span> GABARITO <span class="kw">ADD</span> <span class="nm">10</span> <span class="kw">TO</span> PONTUACAO<br>
+      <span class="ln">006</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">WHEN OTHER</span> <span class="kw">CONTINUE</span><br>
+      <span class="ln">007</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">END-EVALUATE</span>.
+    </div>
+
+    <div class="info-grid-4">
+      <div class="info-card">
+        <div class="info-card-label">ETAPA 1 — RECEPÇÃO</div>
+        <div class="info-card-value">Respostas empacotadas em <span class="hl">WORKING-STORAGE</span> e enviadas ao programa</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">ETAPA 2 — COMPARAÇÃO</div>
+        <div class="info-card-value">Verbo <span class="hl">EVALUATE</span> compara cada resposta com o gabarito no <span class="hl">DATA DIVISION</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">ETAPA 3 — PONTUAÇÃO</div>
+        <div class="info-card-value">Acertos somam <span class="hl">+10 pts</span> via instrução <span class="hl">ADD … TO</span>; erros não alteram o contador</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">ETAPA 4 — RELATÓRIO</div>
+        <div class="info-card-value">O <span class="hl">PROCEDURE DIVISION</span> formata e exibe a pontuação final com classificação</div>
+      </div>
+    </div>
+  </div>
+</div>
+
         <div id="boot-loading">
           > CONECTANDO AO SERVIDOR
           <span class="cursor-blink"></span>
