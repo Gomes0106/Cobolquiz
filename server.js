@@ -239,7 +239,7 @@ app.listen(PORT, () => {
   console.log(`
 ╔══════════════════════════════════════════╗
 ║   QUIZ COBOL SERVER - ONLINE             ║
-║   http://localhost:${PORT}               ║
+║   http://localhost:${PORT}                  ║
 ║   50 questoes | sorteio de 10 por rodada ║
 ║   Backend: Node.js + GnuCOBOL            ║
 ╚══════════════════════════════════════════╝

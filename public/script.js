@@ -38,11 +38,24 @@ async function iniciarBoot() {
         perguntas = dados.perguntas;
         sessaoId = dados.sessaoId;
         
-        // Simula um tempo de carregamento de terminal (estético)
         setTimeout(() => {
             document.getElementById('sessao-badge').innerText = `SID: ${sessaoId.toUpperCase()}`;
-            prepararQuiz();
-        }, 2000);
+            
+            const loadingArea = document.getElementById('boot-loading');
+            loadingArea.innerHTML = `
+                > CONECTANDO AO SERVIDOR... <span style="color:#0f0">OK</span><br>
+                > BANCO DE DADOS SINCRONIZADO... <span style="color:#0f0">OK</span><br><br>
+                <button id="btn-entrar-quiz" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: transparent; color: #0f0; border: 1px solid #0f0; font-family: 'Share Tech Mono', monospace;">
+                  [ PRESSIONE AQUI PARA COMEÇAR A AVALIAÇÃO ]
+                </button>
+            `;
+
+            // Adiciona a ação no botão novo
+            document.getElementById('btn-entrar-quiz').addEventListener('click', () => {
+                prepararQuiz();
+            });
+
+        }, 1500);
 
     } catch (erro) {
         document.getElementById('boot-loading').innerHTML = `<span style="color:red">> ERRO CRÍTICO: FALHA AO CONECTAR COM BACKEND NODE.JS</span>`;
@@ -198,13 +211,21 @@ async function enviarParaCobol() {
         const resultado = await response.json();
         
         // Simula o tempo de leitura do log para efeito visual
-        setTimeout(() => {
-            logArea.innerHTML += `> SAÍDA DO COMPILADOR:<br><br>${resultado.saidaCobol.replace(/\n/g, '<br>')}<br><br>> PROCESSAMENTO CONCLUÍDO.`;
-            
-            setTimeout(() => {
-                exibirResultadoFinal(resultado);
-            }, 1500);
-        }, 1000);
+setTimeout(() => {
+    logArea.innerHTML += `> SAÍDA DO COMPILADOR:<br><br>${resultado.saidaCobol.replace(/\n/g, '<br>')}<br><br>> PROCESSAMENTO CONCLUÍDO.<br><br>`;
+    
+    logArea.innerHTML += `
+        <button id="btn-ver-resultado" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: transparent; color: #0f0; border: 1px solid #0f0; font-family: 'Share Tech Mono', monospace;">
+          [ ACESSAR PAINEL DE PONTUAÇÃO ]
+        </button>
+    `;
+
+
+    document.getElementById('btn-ver-resultado').addEventListener('click', () => {
+        exibirResultadoFinal(resultado);
+    });
+    
+}, 1000);
 
     } catch (erro) {
         logArea.innerHTML += `<br><span style="color:red">> ERRO FATAL: FALHA DE COMUNICAÇÃO COM QUIZ-EVALUATOR.COB</span>`;
